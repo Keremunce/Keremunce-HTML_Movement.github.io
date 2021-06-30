@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: orange;
+        }
+        
+        #oyunalani {
+            width: 640px;
+            height: 480px;
+            border: 2px solid lightgrey;
+            background-color: white;
+            margin: 20px auto;
+            position: relative;
+        }
+        
+        #piyon {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+            left: 0px;
+            top: 0px;
+        }
+        
+        #sonuc {
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body onkeydown="tus();">
+    <div id="oyunalani">
+        <div id="piyon"></div>
+    </div>
+    <p id="sonuc"></p>
+
+    <script>
+        var x = 0,
+            y = 0;
+
+        function tus() {
+            var s = document.getElementById("sonuc");
+            var p = document.getElementById("piyon");
+
+            var k = event.keyCode;
+
+            // a - 65, s - 83, d - 68, w - 87
+
+            switch (k) {
+                case 65:
+                    s.innerHTML = "A Tuşuna basıldı.";
+                    x -= 10;
+                    p.style.left = x + "px";
+                    break
+                case 83:
+                    s.innerHTML = "S Tuşuna basıldı.";
+                    y += 10;
+                    p.style.top = y + "px";
+                    break
+                case 68:
+                    s.innerHTML = "D Tuşuna basıldı.";
+                    x += 10;
+                    p.style.left = x + "px";
+                    break
+                case 87:
+                    s.innerHTML = "W Tuşuna basıldı.";
+                    y -= 10;
+                    p.style.top = y + "px";
+                    break
+                case 65 & 83:
+                    s.innerHTML = "A ve S Tuşuna basıldı.";
+                    x -= 10;
+                    y -= 10;
+                    p.style.left = x + "px";
+                    break
+
+            }
+
+            if (x < 0 || y < 0 || x > 610 || y > 450) {
+                s.innerHTML = "Alan Dışına Çıktınız.";
+            }
+        }
+    </script>
+</body>
+
+</html>
